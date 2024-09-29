@@ -12,7 +12,6 @@ drink_items = ['D1', 'D2',  'D3', 'D4']
 
 # Convert the list of menu items into a list of dictionaries with random stock values
 import random
-
 menu_dict = []
 for item in menu_items:
     code, name, price = item.split(maxsplit=2)

@@ -43,7 +43,7 @@ def process_customer_request(menu, request_code, quantity):
                 print(f"{quantity} x {item['name']} ordered. Stock remaining: {item['stock']}")
                 return True
             else:
-                print(f"Not enough stock for {item['name']}. Available: {item['stock']}, Requested: {quantity}")
+                print(f"Sorry we're left out with the stock {item['name']}. Available: {item['stock']}, Requested: {quantity}")
                 return False
     print(f"Item {request_code} not found on the menu.")
     return False
@@ -76,6 +76,22 @@ def remove_menu_item(menu, code):
             return True
     print(f"Item {code} not found.")
     return False
+
+#taking customer requests
+def take_customer_request(menu):
+    request_code = input("Enter the code of the item you want to order: ").upper()
+    quantity = input(f"Enter the quantity of {request_code} you want to order: ")
+
+    if not quantity.isdigit():
+        print("Invalid quantity. Please enter a number.")
+        return
+
+    quantity = int(quantity)
+    
+    if not process_customer_request(menu, request_code, quantity):
+        print("Order could not be processed.")
+    else:
+        print(f"{quantity} {request_code} successfully ordered.")
 
 #display the menu items
 def display_menu(menu):
